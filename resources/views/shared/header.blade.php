@@ -19,9 +19,7 @@
 
                 <ul>
                     <li><a href="{{ route('home') }}"><div>Home</div></a></li>
-                    <li><a href="{{ route('products') }}"><div>Products</div></a></li>
-                    <li><a href="{{ route('about') }}"><div>About</div></a></li>
-                    <li><a href="{{ route('faq') }}"><div>FAQs</div></a></li>
+                    <li><a href="{{ route('feed') }}"><div>News Feed</div></a></li>
                 </ul>
 
             </nav><!-- #primary-menu end -->
