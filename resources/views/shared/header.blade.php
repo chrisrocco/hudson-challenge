@@ -9,8 +9,8 @@
             <!-- Logo
             ============================================= -->
             <div id="logo">
-                <a href="{{ url('') }}" class="standard-logo" data-dark-logo="{{asset('images/beanalli-white.png')}}"><img src="{{asset('images/beanalli-white.png')}}" alt="Beanalli Coffee"></a>
-                <a href="{{ url('') }}" class="retina-logo" data-dark-logo="{{asset('images/beanalli-white.png')}}"><img src="{{asset('images/beanalli-white.png')}}" alt="Beanalli Coffee"></a>
+                <a href="{{ url('') }}" class="standard-logo" data-dark-logo="{{asset('images/logo-dark.png')}}"><img src="{{asset('images/logo.png')}}" alt="Social Genome"></a>
+                <a href="{{ url('') }}" class="retina-logo" data-dark-logo="{{asset('images/logo-dark.png')}}"><img src="{{asset('images/logo.png')}}" alt="Social Genome"></a>
             </div><!-- #logo end -->
 
             <!-- Primary Navigation

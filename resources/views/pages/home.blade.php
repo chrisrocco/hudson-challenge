@@ -3,7 +3,7 @@
 @section('title', "Home")
 
 @section('header')
-    @include('shared.header', ['classes' => 'transparent-header'])
+    @include('shared.header')
 @endsection
 
 @section('content')
