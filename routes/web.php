@@ -1,9 +1,16 @@
 <?php
 
-Route::get('/', function () {
-    return view('pages.home');
-})->name('home');
+function registerPage( $name ){
+    Route::get( "/$name", function() use ($name) {
+        return view("pages.$name");
+    })->name($name);
+}
 
-Route::get('/feed', function(){
-    return view("pages.feed");
-})->name("feed");
+registerPage("profile");
+registerPage("feed");
+registerPage("network");
+registerPage("home");
+
+Route::get('/', function () {
+    return redirect('home');
+});
