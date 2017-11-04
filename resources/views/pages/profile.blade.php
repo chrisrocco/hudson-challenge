@@ -20,7 +20,7 @@
                         <img src="images/icons/avatar.jpg" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
 
                         <div class="heading-block noborder">
-                            <h3>SemiColonWeb</h3>
+                            <h3>{{$user['name']}}</h3>
                             <span>Your Profile Bio</span>
                         </div>
 
@@ -33,8 +33,9 @@
                                 <div class="tabs tabs-alt clearfix" id="tabs-profile">
 
                                     <ul class="tab-nav clearfix">
-                                        <li><a href="#tab-feeds"><i class="icon-rss2"></i> Feeds</a></li>
-                                        <li><a href="#tab-posts"><i class="icon-pencil2"></i> Posts</a></li>
+                                        <li><a href="#tab-feeds"><i class="icon-rss2"></i> My Subscriptions</a></li>
+                                        <li><a href="#tab-genome"><i class="icon-pencil"></i> My Genomic Profile</a></li>
+                                        <li><a href="#tab-posts"><i class="icon-news"></i> Recent Studies</a></li>
                                         <li><a href="#tab-replies"><i class="icon-reply"></i> Replies</a></li>
                                         <li><a href="#tab-connections"><i class="icon-users"></i> Connections</a></li>
                                     </ul>
@@ -67,6 +68,60 @@
                                                     <tr>
                                                         <td>
                                                             <code>5/23/2016</code>
+                                                        </td>
+                                                        <td>Logged in to the Account at 16:33:01</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <code>5/22/2016</code>
+                                                        </td>
+                                                        <td>Logged in to the Account at 09:41:58</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <code>5/21/2016</code>
+                                                        </td>
+                                                        <td>Logged in to the Account at 17:16:32</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <code>5/18/2016</code>
+                                                        </td>
+                                                        <td>Logged in to the Account at 22:53:41</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                        <div class="tab-content clearfix" id="tab-genome">
+
+                                            <p>
+                                                < genetic summary >
+                                            </p>
+
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered table-striped">
+                                                    <colgroup>
+                                                        <col class="col-xs-1">
+                                                        <col class="col-xs-7">
+                                                    </colgroup>
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Gene</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <code>Blue Eyes</code>
+                                                        </td>
+                                                        <td>Payment for VPS2 completed</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <code>Big Booty</code>
                                                         </td>
                                                         <td>Logged in to the Account at 16:33:01</td>
                                                     </tr>
@@ -368,13 +423,17 @@
 
                     <div class="col-sm-3 clearfix">
 
+                        <div class="fancy-title topmargin title-border">
+                            <h4>My Traits</h4>
+                        </div>
+
                         <div class="list-group">
-                            <a href="#" class="list-group-item clearfix">Profile <i class="icon-user pull-right"></i></a>
-                            <a href="#" class="list-group-item clearfix">Servers <i class="icon-laptop2 pull-right"></i></a>
-                            <a href="#" class="list-group-item clearfix">Messages <i class="icon-envelope2 pull-right"></i></a>
-                            <a href="#" class="list-group-item clearfix">Billing <i class="icon-credit-cards pull-right"></i></a>
-                            <a href="#" class="list-group-item clearfix">Settings <i class="icon-cog pull-right"></i></a>
-                            <a href="#" class="list-group-item clearfix">Logout <i class="icon-line2-logout pull-right"></i></a>
+                            @foreach($traits as $trait)
+                                <a href="#" class="list-group-item bg-danger clearfix">
+                                    {{$trait['name']}}
+                                    <i class="{{$trait['icon']}} pull-right"></i>
+                                </a>
+                            @endforeach
                         </div>
 
                         <div class="fancy-title topmargin title-border">
@@ -382,10 +441,6 @@
                         </div>
 
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum laboriosam, dignissimos veniam obcaecati. Quasi eaque, odio assumenda porro explicabo laborum!</p>
-
-                        <div class="fancy-title topmargin title-border">
-                            <h4>Social Profiles</h4>
-                        </div>
 
                         <a href="#" class="social-icon si-facebook si-small si-rounded si-light" title="Facebook">
                             <i class="icon-facebook"></i>
