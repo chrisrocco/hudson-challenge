@@ -15,4 +15,8 @@ class Study extends Model {
         'date_published',
     ];
 
+    public function genes() {
+        return $this->belongsToMany(Gene::class, 'studies_genes', 'study_id', 'gene_id');
+    }
+
 }

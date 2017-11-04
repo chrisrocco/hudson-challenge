@@ -11,4 +11,12 @@ class Gene extends Model {
         'name',
         'trait',
     ];
+
+    public function users() {
+        return $this->belongsToMany(User::class, 'users_genes', 'gene_id', 'user_id');
+    }
+
+    public function studies() {
+        return $this->belongsToMany(Study::class, 'studies_genes', 'gene_id', 'study_id');
+    }
 }
