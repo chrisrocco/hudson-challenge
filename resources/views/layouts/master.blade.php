@@ -24,7 +24,7 @@
 
     <!-- Document Title
     ============================================= -->
-    <title>Beanalli - @yield('title')</title>
+    <title>Twitter for Genetics - @yield('title')</title>
 
 </head>
 
