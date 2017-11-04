@@ -1,0 +1,22 @@
+{
+  "name": "beanalli",
+  "version": "1.0.0",
+  "description": "Beanalli Coffee Co.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Coffee",
+    "Beanalli",
+    "Alabama"
+  ],
+  "author": "Vector",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp-sass": "^3.1.0"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1"
+  }
+}
