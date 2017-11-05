@@ -134,7 +134,7 @@ Route::post("variant", function (Request $request){
 
 Route::delete("variant/{id}", function ($id, Request $request){
 
-    \App\Gene::destroy($id);
+    \App\UserGene::where('gene_id', '=', $id)->delete();
 
     return response("Success");
 })->name("delete_variant");
