@@ -24,6 +24,13 @@ class StudyGene extends Model {
         return log10($odds_ratio);
     }
 
+    public static function ratioToEnum($odds_ratio) {
+        $scale = self::ratioToScale($odds_ratio);
+        if ($scale <= -0.33) {  return 0;   }
+        if ($scale >= 0.33) {  return  2;   }
+        return 1;
+    }
+
     public function study() {
         return $this->belongsTo(Study::class, 'study_id');
     }
