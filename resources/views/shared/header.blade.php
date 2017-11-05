@@ -1,4 +1,7 @@
 <?php
+
+use App\User;
+
 $news = User::first()->feed()->with(['study','study.phenotype'])->where('read', '=', 0)->get();
 ?>
 
