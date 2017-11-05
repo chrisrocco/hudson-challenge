@@ -12,12 +12,17 @@
             "list-group-item-warning",
             "list-group-item-danger",
         ];
+        $icon_map = [
+            "icon-checkmark",
+            "",
+            "icon-exclamation-sign"
+        ]
 ?>
 
 @section('content')
-    <pre>
+    {{--<pre>
         {{ json_encode($traits, 128) }}
-    </pre>
+    </pre>--}}
     <section id="content">
 
         <div class="content-wrap">
@@ -112,7 +117,7 @@
                                                             <div class="row clearfix">
                                                                 <div class="col-sm-4">
                                                                     <div class="entry-image">
-                                                                        <a href="http://via.placeholder.com/262x147" data-lightbox="image"><img class="image_fade" src="http://via.placeholder.com/262x147" alt="Standard Post with Image"></a>
+                                                                        <a href="http://www.utu.fi/en/research/research-collegia/tcsm/PublishingImages/dna_480px.jpg" data-lightbox="image"><img class="image_fade" src="http://www.utu.fi/en/research/research-collegia/tcsm/PublishingImages/dna_480px.jpg" alt="Standard Post with Image"></a>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-8">
@@ -170,10 +175,11 @@
                             @foreach($traits as $trait)
                                 <?php
                                     $trait_class = $color_map[$trait['scale']];
+                                    $trait_icon = $icon_map[$trait['scale']];
                                 ?>
                                 <a href="#" class="list-group-item {{$trait_class}} clearfix">
                                     {{$trait['name']}}
-                                    <i class="{{$trait['icon']}} pull-right"></i>
+                                    <i class="{{$trait_icon}} pull-right"></i>
                                 </a>
                             @endforeach
                         </div>
