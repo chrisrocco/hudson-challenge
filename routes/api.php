@@ -48,6 +48,6 @@ Route::get("feed/unread", function(Request $request){
     // returns items from the feed that are marked "unread"
 });
 
-Route::get("feed/1/mark-read", function(){
+Route::get("feed/{feed}/mark-read", function($feed_id, Request $request){
     // set flag to "read"
 });
