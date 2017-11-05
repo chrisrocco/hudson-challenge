@@ -19,13 +19,17 @@ class StudyGene extends Model {
 
     protected $table = "studies_genes";
 
+    public static function ratioToScale ($odds_ratio) {
+        $odds_ratio = max(0.1, min(10, $odds_ratio)); //clamp between 0.1 and 10
+        return log10($odds_ratio);
+    }
+
     public function study() {
         return $this->belongsTo(Study::class, 'study_id');
     }
 
     public function getOddsScaleAttribute() {
         $ratio = $this->odds_ratio;
-        $ratio = max(0.1, min(10, $ratio)); //clamp between 0.1 and 10
-        return log10($ratio);
+        return self::ratioToScale($ratio);
     }
 }
