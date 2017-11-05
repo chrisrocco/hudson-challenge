@@ -31,9 +31,9 @@ class FeedService {
     }
 
     private function validateOddsRatio($ratio) {
-        if ($ratio >= 0.75 && $ratio <= 1.5) {
-            return false;
-        }
+//        if ($ratio >= 0.75 && $ratio <= 1.5) {
+//            return false;
+//        }
         return true;
     }
 
