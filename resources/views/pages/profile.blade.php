@@ -20,9 +20,7 @@
 ?>
 
 @section('content')
-    {{--<pre>
-        {{ json_encode($traits, 128) }}
-    </pre>--}}
+    {{--<pre>{{ json_encode($feed, 128) }}</pre>--}}
     <section id="content">
 
         <div class="content-wrap">
@@ -33,7 +31,7 @@
 
                     <div class="col-sm-9">
 
-                        <img src="images/chris_rocco.jpg" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
+                        <img src="https://pbs.twimg.com/profile_images/879355674957926400/VSGZHGib.jpg" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
 
                         <div class="heading-block noborder">
                             <h3>{{$user['name']}}</h3>
@@ -109,7 +107,7 @@
 
                                             <div class="row topmargin-sm clearfix">
 
-                                                @foreach($feed as $media)
+                                                @foreach($new as $media)
                                                     <?php $study = $media['study'] ?>
 
                                                     <div class="col-xs-12 bottommargin-sm">
@@ -206,5 +204,33 @@
                 window.location.reload();
             });
         }
+
+        function markRead(feedObject){
+            let studyId = feedObject.id;
+            $.ajax({
+                url: "api/feed/"+studyId+"/mark-read",
+                type: "GET"
+            }).done(function(){
+                console.log("marked read", studyId);
+            });
+        }
+
+        function checkForUpdates(){
+            $.ajax({
+                url: "api/feed/unread",
+                type: "GET"
+            }).done(function(data){
+                if(data.length > 0)
+                    window.location.reload();
+                console.log("no updates");
+            });
+        }
+
+        let feed = <?= json_encode($new) ?>;
+        $(document).ready(function(){
+            feed.forEach(markRead);
+
+            setInterval(checkForUpdates, 5000);
+        })
     </script>
 @endsection

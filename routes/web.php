@@ -7,11 +7,11 @@ Route::get( "/profile", function() {
 
     $user = User::first();
 
-    $new = $user->feed()->with(['study','study.phenotype'])->where('read', '=', 0)->get();
+    $new = $user->feed()->where('read', '=', 0)->with(['study','study.phenotype'])->get();
 
     $feed =
         $user->feed()
-        ->with(['study','study.phenotype'])
+        ->with(['study','study.phenotype'])->orderBy("read", "ASC")
         ->get();
 
     $genes = $user->genes()->with('studies.phenotype')->get();
