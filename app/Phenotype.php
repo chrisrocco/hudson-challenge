@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Phenotype extends Model {
 
+    public $timestamps = false;
+
     protected $table = "traits";
 
     protected $fillable = [

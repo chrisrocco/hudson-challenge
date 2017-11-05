@@ -1,8 +1,13 @@
 <?php
 
+use App\Gene;
+use App\Phenotype;
+use App\Study;
+use App\StudyGene;
 use App\UserFeed;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,4 +69,48 @@ Route::get("feed/{feed}/mark-read", function($feed_id, Request $request){
     }
     $feed->read = true;
     $feed->save();
+});
+
+Route::post("studies", function (Request $request) {
+    $traitName = $request->trait;
+    $studyParams = $request->study;
+    $genes = $request->genes;
+
+    try {
+        DB::transaction( function () use($traitName, $studyParams, $genes) {
+            $trait = Phenotype::where('name', '=', strtolower($traitName))->first();
+            if ($trait === null) {
+                $trait = Phenotype::create(['name' => strtolower($traitName)]);
+            }
+
+            $study = new Study($studyParams);
+            $study->trait_id = $trait->getKey();
+            $study->save();
+
+            foreach ($genes as $newGene) {
+                $gene = Gene::where('name', '=', $newGene['name'])->first();
+                if ($gene === null) {
+                    $gene = Gene::create($newGene);
+                }
+
+                $edge = new StudyGene([
+                    'odds_ratio' => $newGene['odds_ratio'],
+                    'allele' => $newGene['allele'],
+                ]);
+                $edge->study_id = $study->getKey();
+                $edge->gene_id = $gene->getKey();
+                $edge->save();
+        }
+
+        } );
+    } catch (\Exception $e) {
+        return response()->json([
+            'status' => 'INVALID_DATA',
+            'msg' => [
+                $e->getMessage(),
+                $e->getFile().":".$e->getLine(),
+            ],
+        ], 400);
+    }
+
 });
