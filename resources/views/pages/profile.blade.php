@@ -21,7 +21,7 @@
 
                         <div class="heading-block noborder">
                             <h3>{{$user['name']}}</h3>
-                            <span>Your Profile Bio</span>
+                            <span>{{$user['bio']}}</span>
                         </div>
 
                         <div class="clear"></div>
@@ -51,9 +51,9 @@
 
                                             <div class="col_half">
                                                 <ul class="list-group">
-                                                    {{--@foreach($genes as $gene)
-                                                        <li class="list-group-item">{{$gene}}</li>
-                                                    @endforeach--}}
+                                                    @foreach($genes as $gene)
+                                                        <li class="list-group-item">{{$gene['name']}}</li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
 
@@ -62,7 +62,9 @@
 
                                             <div class="row topmargin-sm clearfix">
 
-                                                {{--@foreach($feed as $media)
+                                                @foreach($feed as $media)
+                                                    <?php $study = $media['study'] ?>
+
                                                     <div class="col-xs-12 bottommargin-sm">
                                                         <div class="ipost clearfix">
                                                             <div class="row clearfix">
@@ -73,12 +75,12 @@
                                                                 </div>
                                                                 <div class="col-sm-8">
                                                                     <div class="entry-title">
-                                                                        <h3><a href="blog-single.html">{{$media['name']}}</a></h3>
+                                                                        <h3><a href="blog-single.html">{{$study['pmc_id']}}</a></h3>
                                                                     </div>
                                                                     <ul class="entry-meta clearfix">
-                                                                        <li><i class="icon-calendar3"></i>{{$media['date_published']}}</li>
-                                                                        <li><a href="#"><i class="{{$media['trait']['icon']}}"></i>
-                                                                                {{$media['trait']['name']}}
+                                                                        <li><i class="icon-calendar3"></i>{{$study['date_added']}}</li>
+                                                                        <li><a href="#"><i class="icon-frown"></i>
+                                                                                {{$study['phenotype']['name']}}
                                                                             </a></li>
                                                                     </ul>
                                                                     <div class="entry-content">
@@ -88,7 +90,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                @endforeach--}}
+                                                @endforeach
 
                                             </div>
 
