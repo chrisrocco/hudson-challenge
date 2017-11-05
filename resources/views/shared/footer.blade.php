@@ -4,7 +4,7 @@
 
         <!-- Footer Widgets
         ============================================= -->
-        <div class="footer-widgets-wrap clearfix">
+        {{--<div class="footer-widgets-wrap clearfix">
 
             <div class="row">
 
@@ -77,68 +77,7 @@
 
             </div>
 
-            <div class="line"></div>
-
-            <div class="row clearfix">
-
-                <div class="col-md-7 col-sm-6">
-                    <div class="widget clearfix">
-                        <div class="clear-bottommargin-sm">
-                            <div class="row clearfix">
-
-                                <div class="col-md-6">
-                                    <div class="footer-big-contacts">
-                                        <span>Call Us:</span>
-                                        251 458 3079
-                                    </div>
-                                    <div class="visible-sm visible-xs bottommargin-sm"></div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="footer-big-contacts">
-                                        <span>Send an Email:</span>
-                                        info@beanalli.com
-                                    </div>
-                                    <div class="visible-xs bottommargin-sm"></div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="visible-sm visible-xs bottommargin-sm"></div>
-                </div>
-
-                <div class="col-md-5 col-sm-6">
-
-                    <div class="clearfix" data-class-lg="fright" data-class-md="fright" data-class-sm="fright" data-class-xs="" data-class-xxs="">
-
-                        <a href="#" class="social-icon si-colored si-youtube">
-                            <i class="icon-youtube"></i>
-                            <i class="icon-youtube"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-colored si-facebook">
-                            <i class="icon-facebook"></i>
-                            <i class="icon-facebook"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-colored si-twitter">
-                            <i class="icon-twitter"></i>
-                            <i class="icon-twitter"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-colored si-instagram">
-                            <i class="icon-instagram"></i>
-                            <i class="icon-instagram"></i>
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div><!-- .footer-widgets-wrap end -->
+        </div>--}}<!-- .footer-widgets-wrap end -->
 
     </div>
 
@@ -148,7 +87,7 @@
 
         <div class="container center uppercase clearfix">
 
-            Copyrights &copy; 2017 All Rights Reserved by Beanalli Coffee Co.
+            Copyrights &copy; 2017 All Rights Reserved by Hudson Alpha
 
         </div>
 
