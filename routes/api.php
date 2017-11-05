@@ -6,6 +6,7 @@ use App\Services\FeedService;
 use App\Study;
 use App\StudyGene;
 use App\UserFeed;
+use App\UserGene;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\DB;
@@ -36,18 +37,6 @@ Route::post("contact", function(Request $request){
     Mail::to(config('custom.contact_from_recipient'))
         ->send( $contact_email );
 })->name("contact");
-
-Route::post("studies", function (Request $request) {
-    $params = [
-        ''
-    ];
-
-    /**
-     * 1.) Create the study in database
-     * 2.) Run a match operation to retrieve a list of users
-     * 3.) Populate the user news feed
-     */
-});
 
 Route::get("feed", function(Request $request){
     // returns entire feed, old and new
@@ -110,30 +99,29 @@ Route::post("studies", function (Request $request, FeedService $feedService) {
 
 });
 
-Route::post("variant", function (Request $request){
+Route::post("variant", function (Request $request, FeedService $feedService){
     $user = User::first();
-    $allel = $request->allel;
+    $allele = $request->allel;
     $variant = $request->variant;
 
-    $gene = Gene::where('name', '=', $variant)->first();
-    if ($gene === null) {
-        $gene = Gene::create([
-            "name" => $variant
-        ]);
-    }
-
-    $user_gene = \App\UserGene::create([
-        "user_id" => $user->id,
-        "gene_id" => $gene->id,
-        "allele" => $allel
+    $gene = Gene::retrieveOrCreate([
+        "name" => $variant
     ]);
+
+    $user_gene = UserGene::create([
+        "user_id" => $user->getKey(),
+        "gene_id" => $gene->getKey(),
+        "allele" => $allele
+    ]);
+
+    $feedService->checkAvailableStudies($user_gene);
 
     return Redirect::to(route("profile"));
 })->name("variant");
 
 Route::delete("variant/{id}", function ($id, Request $request){
 
-    \App\UserGene::where('gene_id', '=', $id)->delete();
+    UserGene::where('gene_id', '=', $id)->delete();
 
     return response("Success");
 })->name("delete_variant");
