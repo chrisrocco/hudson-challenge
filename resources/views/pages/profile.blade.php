@@ -158,12 +158,22 @@
                             <h4>My Phenotypes</h4>
                         </div>
 
+                        <button class="btn btn-danger"></button> = High Risk
+                        <br/>
+                        <button class="btn btn-warning"></button> = Average Risk
+                        <br/>
+                        <button class="btn btn-info"></button> = Low Risk
+                        <br/>
+                        <br/>
+
                         <div class="list-group">
                             @foreach($traits as $trait)
-                                <?php $trait_class = $color_map[$trait['scale']] ?>
+                                <?php
+                                    $trait_class = $color_map[$trait['scale']];
+                                ?>
                                 <a href="#" class="list-group-item {{$trait_class}} clearfix">
-                                    {{((array)($trait))['name']}}
-                                    <i class="icon-frown pull-right"></i>
+                                    {{$trait['name']}}
+                                    <i class="{{$trait['icon']}} pull-right"></i>
                                 </a>
                             @endforeach
                         </div>
