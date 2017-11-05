@@ -74,7 +74,9 @@
                                                                     <ul class="entry-meta clearfix">
                                                                         <li><i class="icon-calendar3"></i>{{$study['date_added']}}</li>
                                                                         <li><a href="#"><i class="icon-frown"></i>
-                                                                                {{$study['phenotype']['name']}}
+                                                                                <b>
+                                                                                    {{$study['phenotype']['name']}}
+                                                                                </b>
                                                                             </a></li>
                                                                     </ul>
                                                                     <div class="entry-content">
