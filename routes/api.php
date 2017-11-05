@@ -8,6 +8,7 @@ use App\UserFeed;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -114,3 +115,26 @@ Route::post("studies", function (Request $request) {
     }
 
 });
+
+Route::post("variant", function (Request $request){
+    $user = User::first();
+    $allel = $request->allel;
+    $variant = $request->variant;
+    $gene = Gene::create([
+        "name" => $variant
+    ]);
+    $user_gene = \App\UserGene::create([
+        "user_id" => $user->id,
+        "gene_id" => $gene->id,
+        "allele" => $allel
+    ]);
+
+    return Redirect::to(route("profile"));
+})->name("variant");
+
+Route::delete("variant/{id}", function ($id, Request $request){
+
+    \App\Gene::destroy($id);
+
+    return response("Success");
+})->name("delete_variant");

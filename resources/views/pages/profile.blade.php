@@ -48,7 +48,13 @@
 
                                                 <ul class="list-group">
                                                     @foreach($genes as $gene)
-                                                        <li class="list-group-item list-group-item-info">{{$gene['name']}}</li>
+                                                        <li class="list-group-item list-group-item-info">
+                                                            {{$gene['name']}}
+                                                            <span class="badge">
+                                                                <a href onclick="deleteVariant({{$gene['id']}})"
+                                                                    style="color: white"> x </a>
+                                                            </span>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div>
@@ -60,16 +66,21 @@
 
                                                 <p>Upload your genetic variants here to get news articles pertaining to risky genes</p>
 
-                                                <form class="nobottommargin" action="test" method="post">
+                                                <form class="nobottommargin" action="{{route('variant')}}" method="post">
 
                                                     <div class="col_half">
                                                         <label for="billing-form-name" >Variant ID:</label>
-                                                        <input id="billing-form-name" name="billing-form-name" required class="sm-form-control" />
+                                                        <input id="billing-form-name" name="variant" required class="sm-form-control" />
                                                     </div>
 
                                                     <div class="col_half col_last">
-                                                        <label for="billing-form-lname">Allel</label>
-                                                        <input id="billing-form-lname" name="billing-form-lname" required class="sm-form-control" />
+                                                        <label for="billing-form-lname">Nucliotide</label>
+                                                        <select name="allel" class="sm-form-control">
+                                                            <option value="A">A</option>
+                                                            <option value="G">G</option>
+                                                            <option value="T">T</option>
+                                                            <option value="C">C</option>
+                                                        </select>
                                                     </div>
 
                                                     <button class="button button-rounded button-reveal button-large button-dirtygreen"><i class="icon-upload"></i><span>Upload!</span></button>
@@ -154,4 +165,18 @@
         </div>
 
     </section>
+
+@endsection
+
+@section('javascript')
+    <script>
+        function deleteVariant(id){
+            $.ajax({
+                url: "api/variant/"+id,
+                type: "delete",
+            }).done(function(){
+                window.location.reload();
+            });
+        }
+    </script>
 @endsection

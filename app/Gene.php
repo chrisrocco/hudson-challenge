@@ -11,7 +11,7 @@ class Gene extends Model {
     protected $table = "genes";
 
     protected $fillable = [
-        'name',
+        'name'
     ];
 
     public function users() {
