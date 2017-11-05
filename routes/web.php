@@ -21,7 +21,7 @@ Route::get( "/profile", function() {
                 AND genes.id = studies_genes.gene_id
                 AND studies.id = studies_genes.study_id
                 AND traits.id = studies.trait_id
-            ");
+            ")->toArray();
 
     return view("pages.profile", [
         "user" => $user,
