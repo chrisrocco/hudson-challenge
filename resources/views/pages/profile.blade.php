@@ -21,7 +21,7 @@
 
                         <div class="heading-block noborder">
                             <h3>{{$user['name']}}</h3>
-                            <span>Your Profile Bio</span>
+                            <span>{{$user['bio']}}</span>
                         </div>
 
                         <div class="clear"></div>
@@ -41,14 +41,40 @@
 
                                         <div class="tab-content clearfix" id="tab-genome">
 
-                                            <p> My gene list </p>
-
                                             <div class="col_half">
+                                                <div class="fancy-title">
+                                                    <h4>Variant Reference List</h4>
+                                                </div>
+
                                                 <ul class="list-group">
                                                     @foreach($genes as $gene)
-                                                        <li class="list-group-item">{{$gene}}</li>
+                                                        <li class="list-group-item list-group-item-info">{{$gene['name']}}</li>
                                                     @endforeach
                                                 </ul>
+                                            </div>
+
+                                            <div class="col_half col_last">
+                                                <div class="fancy-title">
+                                                    <h4>Upload Genetic Data</h4>
+                                                </div>
+
+                                                <p>Upload your genetic variants here to get news articles pertaining to risky genes</p>
+
+                                                <form class="nobottommargin" action="test" method="post">
+
+                                                    <div class="col_half">
+                                                        <label for="billing-form-name" >Variant ID:</label>
+                                                        <input id="billing-form-name" name="billing-form-name" required class="sm-form-control" />
+                                                    </div>
+
+                                                    <div class="col_half col_last">
+                                                        <label for="billing-form-lname">Allel</label>
+                                                        <input id="billing-form-lname" name="billing-form-lname" required class="sm-form-control" />
+                                                    </div>
+
+                                                    <button class="button button-rounded button-reveal button-large button-dirtygreen"><i class="icon-upload"></i><span>Upload!</span></button>
+                                                </form>
+
                                             </div>
 
                                         </div>
@@ -57,6 +83,8 @@
                                             <div class="row topmargin-sm clearfix">
 
                                                 @foreach($feed as $media)
+                                                    <?php $study = $media['study'] ?>
+
                                                     <div class="col-xs-12 bottommargin-sm">
                                                         <div class="ipost clearfix">
                                                             <div class="row clearfix">
@@ -67,16 +95,18 @@
                                                                 </div>
                                                                 <div class="col-sm-8">
                                                                     <div class="entry-title">
-                                                                        <h3><a href="blog-single.html">{{$media['name']}}</a></h3>
+                                                                        <h3><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC{{$study['pmc_id']}}/">PMC ID: {{$study['pmc_id']}}</a></h3>
                                                                     </div>
                                                                     <ul class="entry-meta clearfix">
-                                                                        <li><i class="icon-calendar3"></i>{{$media['date_published']}}</li>
-                                                                        <li><a href="#"><i class="{{$media['trait']['icon']}}"></i>
-                                                                                {{$media['trait']['name']}}
+                                                                        <li><i class="icon-calendar3"></i>{{$study['date_added']}}</li>
+                                                                        <li><a href="#"><i class="icon-frown"></i>
+                                                                                {{$study['phenotype']['name']}}
                                                                             </a></li>
                                                                     </ul>
                                                                     <div class="entry-content">
-                                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in.</p>
+                                                                        <p><b>{{$study['name']}}</b></p>
+                                                                        <br/>
+                                                                        <p><em>Because of your phenotype: {{$study['phenotype']['name']}}</em></p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -103,14 +133,14 @@
                     <div class="col-sm-3 clearfix">
 
                         <div class="fancy-title topmargin title-border">
-                            <h4>My Traits</h4>
+                            <h4>My Phenotypes</h4>
                         </div>
 
                         <div class="list-group">
                             @foreach($traits as $trait)
-                                <a href="#" class="list-group-item bg-danger clearfix">
-                                    {{$trait['name']}}
-                                    <i class="{{$trait['icon']}} pull-right"></i>
+                                <a href="#" class="list-group-item list-group-item-warning clearfix">
+                                    {{((array)($trait))['name']}}
+                                    <i class="icon-frown pull-right"></i>
                                 </a>
                             @endforeach
                         </div>
