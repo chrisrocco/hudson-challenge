@@ -20,8 +20,6 @@ class FeedService {
             ->where('allele', '=', strtoupper($geneInfo->allele))
             ->get();
 
-        var_dump($userGenes);
-
         foreach ($userGenes as $userGene) {
             $user = $userGene->user()->first();
             UserFeed::create([

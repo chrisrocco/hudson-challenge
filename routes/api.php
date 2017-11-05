@@ -93,7 +93,7 @@ Route::post("studies", function (Request $request, FeedService $feedService) {
                 $edge->study_id = $study->getKey();
                 $edge->gene_id = $gene->getKey();
                 $edge->save();
-                //$feedService->addToFeeds($edge);
+                $feedService->addToFeeds($edge);
             }
 
         } );
