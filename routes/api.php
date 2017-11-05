@@ -81,6 +81,7 @@ Route::post("studies", function (Request $request, FeedService $feedService) {
     try {
         DB::transaction( function () use($feedService, $traitName, $studyParams, $genes) {
             $trait = Phenotype::retrieveOrCreate(['name' => $traitName]);
+            $studyParams['trait_id'] = $trait->getKey();
             $study = Study::retrieveOrCreate($studyParams);
 
             foreach ($genes as $newGene) {
@@ -93,7 +94,7 @@ Route::post("studies", function (Request $request, FeedService $feedService) {
                 $edge->study_id = $study->getKey();
                 $edge->gene_id = $gene->getKey();
                 $edge->save();
-                //$feedService->addToFeeds($edge);
+                $feedService->addToFeeds($edge);
             }
 
         } );
