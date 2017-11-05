@@ -13,6 +13,8 @@ class TableStudies extends Migration {
         Schema::create("studies", function (Blueprint $table) {
             $table->increments('id');
 
+            $table->unsignedInteger('trait_id');
+
             $table->string('name');
             $table->string('pmc_id')->unique();
 

@@ -27,3 +27,9 @@ Route::post("contact", function(Request $request){
     Mail::to(config('custom.contact_from_recipient'))
         ->send( $contact_email );
 })->name("contact");
+
+Route::post("studies", function (Request $request) {
+    $params = [
+        ''
+    ];
+});
