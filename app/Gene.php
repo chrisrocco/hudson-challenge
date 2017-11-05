@@ -9,7 +9,6 @@ class Gene extends Model {
 
     protected $fillable = [
         'name',
-        'trait',
     ];
 
     public function users() {
@@ -18,5 +17,9 @@ class Gene extends Model {
 
     public function studies() {
         return $this->belongsToMany(Study::class, 'studies_genes', 'gene_id', 'study_id');
+    }
+
+    public function traits() {
+        //TODO
     }
 }
