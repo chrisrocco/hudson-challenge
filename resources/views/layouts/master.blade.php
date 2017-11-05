@@ -4,7 +4,7 @@
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="author" content="Vector Web Development"/>
-    <link rel="shortcut icon" type="image/png" href="images/favicon.png?v=1"/>
+    <link rel="shortcut icon" type="image/png" href="images/dna.png?v=1"/>
 
     <!-- Stylesheets
     ============================================= -->
@@ -24,7 +24,7 @@
 
     <!-- Document Title
     ============================================= -->
-    <title>Twitter for Genetics - @yield('title')</title>
+    <title>GeMe - @yield('title')</title>
 
 </head>
 

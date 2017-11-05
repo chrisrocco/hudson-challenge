@@ -16,7 +16,7 @@
             <div id="top-account" class="dropdown">
                 <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" ><i class="icon-user"></i><i class="icon-angle-down"></i></a>
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">Profile</a></li>
+                    <li><a href="{{ route('profile') }}">Profile</a></li>
                     <li><a href="#">Network <span class="badge">5</span></a></li>
                     <li><a href="#">Settings</a></li>
                     <li role="separator" class="divider"></li>
@@ -30,9 +30,9 @@
 
                 <ul>
                     <li><a href="{{ route('home') }}"><div>Home</div></a></li>
-                    <li><a href="{{ route('feed') }}"><div>News Feed</div></a></li>
+                    {{--<li><a href="{{ route('feed') }}"><div>News Feed</div></a></li>--}}
                     <li><a href="{{ route('profile') }}"><div>My Profile</div></a></li>
-                    <li><a href="{{ route('network') }}"><div>My Network</div></a></li>
+                    {{--<li><a href="{{ route('network') }}"><div>My Network</div></a></li>--}}
                 </ul>
 
             </nav><!-- #primary-menu end -->
