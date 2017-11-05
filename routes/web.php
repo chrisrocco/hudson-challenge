@@ -38,11 +38,6 @@ Route::get( "/profile", function() {
 
 })->name("profile");
 
-Route::get( "/feed", function() {
-
-    return view("pages.feed");
-})->name("feed");
-
 Route::get( "/home", function() {
     return view("pages.home");
 })->name("home");

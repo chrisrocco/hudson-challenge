@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <section id="content">
+    <section id="content" ng-app="geme" ng-controller="ProfileController">
 
         <div class="content-wrap">
 
