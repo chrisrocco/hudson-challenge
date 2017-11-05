@@ -2,6 +2,7 @@
 
 use App\Gene;
 use App\Phenotype;
+use App\Services\FeedService;
 use App\Study;
 use App\StudyGene;
 use App\UserFeed;
@@ -71,27 +72,18 @@ Route::get("feed/{feed}/mark-read", function($feed_id, Request $request){
     $feed->save();
 });
 
-Route::post("studies", function (Request $request) {
+Route::post("studies", function (Request $request, FeedService $feedService) {
     $traitName = $request->trait;
     $studyParams = $request->study;
     $genes = $request->genes;
 
     try {
-        DB::transaction( function () use($traitName, $studyParams, $genes) {
-            $trait = Phenotype::where('name', '=', strtolower($traitName))->first();
-            if ($trait === null) {
-                $trait = Phenotype::create(['name' => strtolower($traitName)]);
-            }
-
-            $study = new Study($studyParams);
-            $study->trait_id = $trait->getKey();
-            $study->save();
+        DB::transaction( function () use($feedService, $traitName, $studyParams, $genes) {
+            $trait = Phenotype::retrieveOrCreate(['name' => $traitName]);
+            $study = Study::retrieveOrCreate($studyParams);
 
             foreach ($genes as $newGene) {
-                $gene = Gene::where('name', '=', $newGene['name'])->first();
-                if ($gene === null) {
-                    $gene = Gene::create($newGene);
-                }
+                $gene = Gene::retrieveOrCreate($newGene);
 
                 $edge = new StudyGene([
                     'odds_ratio' => $newGene['odds_ratio'],
@@ -100,7 +92,8 @@ Route::post("studies", function (Request $request) {
                 $edge->study_id = $study->getKey();
                 $edge->gene_id = $gene->getKey();
                 $edge->save();
-        }
+                //$feedService->addToFeeds($edge);
+            }
 
         } );
     } catch (\Exception $e) {
