@@ -74,7 +74,7 @@
                                                     </div>
 
                                                     <div class="col_half col_last">
-                                                        <label for="billing-form-lname">Nucliotide</label>
+                                                        <label for="billing-form-lname">Allele</label>
                                                         <select name="allel" class="sm-form-control">
                                                             <option value="A">A</option>
                                                             <option value="G">G</option>
