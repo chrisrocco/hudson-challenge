@@ -95,7 +95,7 @@ Route::post("studies", function (Request $request) {
 
                 $edge = new StudyGene([
                     'odds_ratio' => $newGene['odds_ratio'],
-                    'allele' => $newGene['allele'],
+                    'allele' => strtoupper($newGene['allele']),
                 ]);
                 $edge->study_id = $study->getKey();
                 $edge->gene_id = $gene->getKey();
