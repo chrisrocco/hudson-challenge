@@ -45,13 +45,13 @@ Route::post("studies", function (Request $request) {
 Route::get("feed", function(Request $request){
     // returns entire feed, old and new
     $user = User::first();
-    return $user->feed()->get();
+    return $user->feed()->with('study')->get();
 });
 
 Route::get("feed/unread", function(Request $request){
     // returns items from the feed that are marked "unread"
     $user = User::first();
-    return $user->feed()->where('read', '=', 0);
+    return $user->feed()->with('study')->where('read', '=', 0)->get();
 });
 
 Route::get("feed/{feed}/mark-read", function($feed_id, Request $request){
