@@ -7,6 +7,8 @@ Route::get( "/profile", function() {
 
     $user = User::first();
 
+    $new = $user->feed()->with(['study','study.phenotype'])->where('read', '=', 0)->get();
+
     $feed =
         $user->feed()
         ->with(['study','study.phenotype'])
@@ -27,7 +29,8 @@ Route::get( "/profile", function() {
         "user" => $user,
         "traits" => $traits,
         "feed" => $feed,
-        "genes" => $genes
+        "genes" => $genes,
+        "new" => $new
     ]);
 
 })->name("profile");
