@@ -20,4 +20,8 @@ class User extends Authenticatable {
     public function genes() {
         return $this->belongsToMany(Gene::class, 'users_genes', 'user_id', 'gene_id');
     }
+
+    public function feed() {
+        return $this->hasMany(UserFeed::class, 'user_id');
+    }
 }
