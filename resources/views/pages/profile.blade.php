@@ -12,12 +12,17 @@
             "list-group-item-warning",
             "list-group-item-danger",
         ];
+        $icon_map = [
+            "icon-checkmark",
+            "",
+            "icon-exclamation-sign"
+        ]
 ?>
 
 @section('content')
-    <pre>
+    {{--<pre>
         {{ json_encode($traits, 128) }}
-    </pre>
+    </pre>--}}
     <section id="content">
 
         <div class="content-wrap">
@@ -28,7 +33,7 @@
 
                     <div class="col-sm-9">
 
-                        <img src="images/icons/avatar.jpg" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
+                        <img src="images/chris_rocco.jpg" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
 
                         <div class="heading-block noborder">
                             <h3>{{$user['name']}}</h3>
@@ -112,7 +117,7 @@
                                                             <div class="row clearfix">
                                                                 <div class="col-sm-4">
                                                                     <div class="entry-image">
-                                                                        <a href="http://via.placeholder.com/262x147" data-lightbox="image"><img class="image_fade" src="http://via.placeholder.com/262x147" alt="Standard Post with Image"></a>
+                                                                        <a href="http://www.utu.fi/en/research/research-collegia/tcsm/PublishingImages/dna_480px.jpg" data-lightbox="image"><img class="image_fade" src="http://www.utu.fi/en/research/research-collegia/tcsm/PublishingImages/dna_480px.jpg" alt="Standard Post with Image"></a>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-8">
@@ -158,12 +163,23 @@
                             <h4>My Phenotypes</h4>
                         </div>
 
+                        <button class="btn btn-danger"></button> = High Risk
+                        <br/>
+                        <button class="btn btn-warning"></button> = Average Risk
+                        <br/>
+                        <button class="btn btn-info"></button> = Low Risk
+                        <br/>
+                        <br/>
+
                         <div class="list-group">
                             @foreach($traits as $trait)
-                                <?php $trait_class = $color_map[$trait['scale']] ?>
+                                <?php
+                                    $trait_class = $color_map[$trait['scale']];
+                                    $trait_icon = $icon_map[$trait['scale']];
+                                ?>
                                 <a href="#" class="list-group-item {{$trait_class}} clearfix">
-                                    {{((array)($trait))['name']}}
-                                    <i class="icon-frown pull-right"></i>
+                                    {{$trait['name']}}
+                                    <i class="{{$trait_icon}} pull-right"></i>
                                 </a>
                             @endforeach
                         </div>
