@@ -106,7 +106,7 @@
                                                                 </div>
                                                                 <div class="col-sm-8">
                                                                     <div class="entry-title">
-                                                                        <h3><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC{{$study['pmc_id']}}/">PMC ID: {{$study['pmc_id']}}</a></h3>
+                                                                        <h3><a href="https://www.ncbi.nlm.nih.gov/pubmed/{{$study['pmc_id']}}/">PMC ID: {{$study['pmc_id']}}</a></h3>
                                                                     </div>
                                                                     <ul class="entry-meta clearfix">
                                                                         <li><i class="icon-calendar3"></i>{{$study['date_added']}}</li>
