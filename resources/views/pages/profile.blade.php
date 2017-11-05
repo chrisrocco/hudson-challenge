@@ -51,7 +51,7 @@
                                                         <li class="list-group-item list-group-item-info">
                                                             {{$gene['name']}}
                                                             <span class="badge">
-                                                                <a href onclick="deleteVariant({{$gene['id']}})"
+                                                                <a href="javascript:deleteVariant({{$gene['id']}})"
                                                                     style="color: white"> x </a>
                                                             </span>
                                                         </li>

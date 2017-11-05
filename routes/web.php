@@ -17,7 +17,7 @@ Route::get( "/profile", function() {
     $genes = $user->genes()->with('studies.phenotype')->get();
 
     $traits = DB::select("
-            SELECT traits.* FROM users, users_genes, traits, studies_genes, studies, genes
+            SELECT DISTINCT traits.* FROM users, users_genes, traits, studies_genes, studies, genes
             WHERE users.id = users_genes.user_id
                 AND genes.id = users_genes.gene_id
                 AND genes.id = studies_genes.gene_id
