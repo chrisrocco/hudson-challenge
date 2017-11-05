@@ -43,10 +43,6 @@ Route::get( "/feed", function() {
     return view("pages.feed");
 })->name("feed");
 
-Route::get( "/network", function() {
-    return view("pages.network");
-})->name("network");
-
 Route::get( "/home", function() {
     return view("pages.home");
 })->name("home");
@@ -54,3 +50,5 @@ Route::get( "/home", function() {
 Route::get('/', function () {
     return redirect('home');
 });
+
+// matched because of your ...

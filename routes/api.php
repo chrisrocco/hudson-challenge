@@ -32,4 +32,22 @@ Route::post("studies", function (Request $request) {
     $params = [
         ''
     ];
+
+    /**
+     * 1.) Create the study in database
+     * 2.) Run a match operation to retrieve a list of users
+     * 3.) Populate the user news feed
+     */
+});
+
+Route::get("feed", function(Request $request){
+    // returns entire feed, old and new
+});
+
+Route::get("feed/unread", function(Request $request){
+    // returns items from the feed that are marked "unread"
+});
+
+Route::get("feed/1/mark-read", function(){
+    // set flag to "read"
 });
