@@ -3,6 +3,7 @@
 
 namespace App\Services;
 
+use App\Gene;
 use App\StudyGene;
 use App\UserFeed;
 use App\UserGene;
@@ -25,6 +26,20 @@ class FeedService {
             UserFeed::create([
                 'user_id' => $user->getKey(),
                 'study_id' => $study->getKey(),
+                'read' => false,
+            ]);
+        }
+    }
+
+    public function checkAvailableStudies (UserGene $userGene) {
+        $studyGenes = StudyGene::query()
+            ->where('gene_id', '=', $userGene->gene_id)
+            ->where('allele', '=', $userGene->allele)
+            ->get();
+        foreach ($studyGenes as $studyGene) {
+            UserFeed::create([
+                'user_id' => $userGene->user_id,
+                'study_id' => $studyGene->study_id,
                 'read' => false,
             ]);
         }
