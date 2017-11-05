@@ -6,8 +6,19 @@
     @include('shared.header')
 @endsection
 
+<?php
+        $color_map = [
+            "list-group-item-info",
+            "list-group-item-warning",
+            "list-group-item-danger",
+        ];
+?>
+
 @section('content')
-    <section id="content" ng-app="geme" ng-controller="ProfileController">
+    <pre>
+        {{ json_encode($traits, 128) }}
+    </pre>
+    <section id="content">
 
         <div class="content-wrap">
 
@@ -149,7 +160,8 @@
 
                         <div class="list-group">
                             @foreach($traits as $trait)
-                                <a href="#" class="list-group-item list-group-item-warning clearfix">
+                                <?php $trait_class = $color_map[$trait['scale']] ?>
+                                <a href="#" class="list-group-item {{$trait_class}} clearfix">
                                     {{((array)($trait))['name']}}
                                     <i class="icon-frown pull-right"></i>
                                 </a>
