@@ -47,7 +47,8 @@
                                 <div class="tabs tabs-alt clearfix" id="tabs-profile">
 
                                     <ul class="tab-nav clearfix">
-                                        <li><a href="#tab-posts"><i class="icon-news"></i> Recent Studies</a></li>
+                                        <li><a href="#tab-posts-all"><i class="icon-news"></i> All Studies</a></li>
+                                        <li><a href="#tab-posts"><i class="icon-news"></i> New Studies</a></li>
                                         <li><a href="#tab-genome"><i class="icon-pencil"></i> My Genomic Profile</a></li>
                                     </ul>
 
@@ -108,6 +109,45 @@
                                             <div class="row topmargin-sm clearfix">
 
                                                 @foreach($new as $media)
+                                                    <?php $study = $media['study'] ?>
+
+                                                    <div class="col-xs-12 bottommargin-sm">
+                                                        <div class="ipost clearfix">
+                                                            <div class="row clearfix">
+                                                                <div class="col-sm-4">
+                                                                    <div class="entry-image">
+                                                                        <a href="http://www.utu.fi/en/research/research-collegia/tcsm/PublishingImages/dna_480px.jpg" data-lightbox="image"><img class="image_fade" src="http://www.utu.fi/en/research/research-collegia/tcsm/PublishingImages/dna_480px.jpg" alt="Standard Post with Image"></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-8">
+                                                                    <div class="entry-title">
+                                                                        <h3><a href="https://www.ncbi.nlm.nih.gov/pubmed/{{$study['pmc_id']}}/">PMC ID: {{$study['pmc_id']}}</a></h3>
+                                                                    </div>
+                                                                    <ul class="entry-meta clearfix">
+                                                                        <li><i class="icon-calendar3"></i>{{$study['date_added']}}</li>
+                                                                        <li><a href="#"><i class="icon-frown"></i>
+                                                                                {{$study['phenotype']['name']}}
+                                                                            </a></li>
+                                                                    </ul>
+                                                                    <div class="entry-content">
+                                                                        <p><b>{{$study['name']}}</b></p>
+                                                                        <br/>
+                                                                        <p><em>Because of your phenotype: {{$study['phenotype']['name']}}</em></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+
+                                            </div>
+
+                                        </div>
+                                        <div class="tab-content clearfix" id="tab-posts-all">
+
+                                            <div class="row topmargin-sm clearfix">
+
+                                                @foreach($feed as $media)
                                                     <?php $study = $media['study'] ?>
 
                                                     <div class="col-xs-12 bottommargin-sm">
