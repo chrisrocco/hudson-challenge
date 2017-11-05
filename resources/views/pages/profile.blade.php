@@ -43,12 +43,6 @@
 
                                             <p> My gene list </p>
 
-                                            <pre>
-                                                <?php
-                                                    echo json_encode([$genes, $traits, $user, $feed], 128);
-                                                ?>
-                                            </pre>
-
                                             <div class="col_half">
                                                 <ul class="list-group">
                                                     @foreach($genes as $gene)
@@ -75,7 +69,7 @@
                                                                 </div>
                                                                 <div class="col-sm-8">
                                                                     <div class="entry-title">
-                                                                        <h3><a href="blog-single.html">{{$study['pmc_id']}}</a></h3>
+                                                                        <h3><a href="blog-single.html">PMC ID: {{$study['pmc_id']}}</a></h3>
                                                                     </div>
                                                                     <ul class="entry-meta clearfix">
                                                                         <li><i class="icon-calendar3"></i>{{$study['date_added']}}</li>
@@ -84,7 +78,7 @@
                                                                             </a></li>
                                                                     </ul>
                                                                     <div class="entry-content">
-                                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in.</p>
+                                                                        <p>{{$study['name']}}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -115,12 +109,12 @@
                         </div>
 
                         <div class="list-group">
-                            {{--@foreach($traits as $trait)
+                            @foreach($traits as $trait)
                                 <a href="#" class="list-group-item bg-danger clearfix">
                                     {{$trait['name']}}
-                                    <i class="{{$trait['icon']}} pull-right"></i>
+                                    <i class="icon-frown pull-right"></i>
                                 </a>
-                            @endforeach--}}
+                            @endforeach
                         </div>
 
                     </div>
