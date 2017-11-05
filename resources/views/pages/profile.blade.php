@@ -45,15 +45,15 @@
 
                                             <pre>
                                                 <?php
-                                                    echo json_encode($genes, $traits, $user, $feed, 128);
+                                                    echo json_encode([$genes, $traits, $user, $feed], 128);
                                                 ?>
                                             </pre>
 
                                             <div class="col_half">
                                                 <ul class="list-group">
-                                                    @foreach($genes as $gene)
+                                                    {{--@foreach($genes as $gene)
                                                         <li class="list-group-item">{{$gene}}</li>
-                                                    @endforeach
+                                                    @endforeach--}}
                                                 </ul>
                                             </div>
 
@@ -62,7 +62,7 @@
 
                                             <div class="row topmargin-sm clearfix">
 
-                                                @foreach($feed as $media)
+                                                {{--@foreach($feed as $media)
                                                     <div class="col-xs-12 bottommargin-sm">
                                                         <div class="ipost clearfix">
                                                             <div class="row clearfix">
@@ -88,7 +88,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                @endforeach
+                                                @endforeach--}}
 
                                             </div>
 
@@ -113,12 +113,12 @@
                         </div>
 
                         <div class="list-group">
-                            @foreach($traits as $trait)
+                            {{--@foreach($traits as $trait)
                                 <a href="#" class="list-group-item bg-danger clearfix">
                                     {{$trait['name']}}
                                     <i class="{{$trait['icon']}} pull-right"></i>
                                 </a>
-                            @endforeach
+                            @endforeach--}}
                         </div>
 
                     </div>

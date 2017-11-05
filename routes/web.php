@@ -12,7 +12,7 @@ Route::get( "/profile", function() {
         ->with(['study','study.phenotype'])
         ->get();
 
-    $genes = $user->genes()->with('studies.trait')->get();
+    $genes = $user->genes()->with('studies.phenotype')->get();
 
     $traits = DB::select("
             SELECT traits.* FROM users, users_genes, traits, studies_genes, studies, genes
