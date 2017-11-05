@@ -19,4 +19,8 @@ class Study extends Model {
         return $this->belongsToMany(Gene::class, 'studies_genes', 'study_id', 'gene_id');
     }
 
+    public function phenotype() {
+        return $this->belongsTo(Phenotype::class, 'trait_id');
+    }
+
 }
