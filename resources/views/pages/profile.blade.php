@@ -43,6 +43,12 @@
 
                                             <p> My gene list </p>
 
+                                            <pre>
+                                                <?php
+                                                    echo json_encode($genes, $traits, $user, $feed, 128);
+                                                ?>
+                                            </pre>
+
                                             <div class="col_half">
                                                 <ul class="list-group">
                                                     @foreach($genes as $gene)

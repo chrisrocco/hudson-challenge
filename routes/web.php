@@ -1,33 +1,27 @@
 <?php
 
+use App\User;
+use Illuminate\Support\Facades\DB;
+
 Route::get( "/profile", function() {
 
-    $user = [
-        "name" => "Chris Rocco"
-    ];
-    $feed = [
-        [
-            "name" => "test",
-            "pmc_id" => "test",
-            "date_published" => "11/11/11",
-            "trait" => [
-                "name" => "Cancer",
-                "icon" => "icon-frown"
-            ]
-        ]
-    ];
-    $genes = [
-        "ASFD81739",
-        "VS834085T80",
-        "IUBGS845879",
-        "UWEO7Y5479",
-    ];
-    $traits = [
-        [
-            "name" => "Heart Disease",
-            "icon" => "icon-heart"
-        ]
-    ];
+    $user = User::first();
+
+    $feed =
+        $user->feed()
+        ->with(['study','study.phenotype'])
+        ->get();
+
+    $genes = $user->genes()->with('studies.trait')->get();
+
+    $traits = DB::select("
+            SELECT traits.* FROM users, users_genes, traits, studies_genes, studies, genes
+            WHERE users.id = users_genes.user_id
+                AND genes.id = users_genes.gene_id
+                AND genes.id = studies_genes.gene_id
+                AND studies.id = studies_genes.study_id
+                AND traits.id = studies.trait_id
+            ");
 
     return view("pages.profile", [
         "user" => $user,
