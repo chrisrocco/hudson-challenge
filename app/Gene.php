@@ -14,6 +14,14 @@ class Gene extends Model {
         'name'
     ];
 
+    public static function retrieveOrCreate($params) {
+        $gene = Gene::where('name', '=', $params['name'])->first();
+        if ($gene === null) {
+            $gene = Gene::create($params);
+        }
+        return $gene;
+    }
+
     public function users() {
         return $this->belongsToMany(User::class, 'users_genes', 'gene_id', 'user_id');
     }

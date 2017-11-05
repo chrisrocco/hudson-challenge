@@ -14,4 +14,8 @@ class StudyGene extends Model {
     ];
 
     protected $table = "studies_genes";
+
+    public function study() {
+        return $this->belongsTo(Study::class, 'study_id');
+    }
 }
