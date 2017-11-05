@@ -42,5 +42,3 @@ Route::get( "/home", function() {
 Route::get('/', function () {
     return redirect('home');
 });
-
-// matched because of your ...

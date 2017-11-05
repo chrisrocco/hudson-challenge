@@ -25,7 +25,6 @@ $news = User::first()->feed()->with(['study','study.phenotype'])->where('read', 
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                     <li><a href="{{ route('profile') }}">Profile</a></li>
                     <li><a href="{{ route('profile') }}">News <span class="badge">{{count($news)}}</span></a></li>
-                    <li><a href="#">Settings</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="#">Logout <i class="icon-signout"></i></a></li>
                 </ul>

@@ -113,9 +113,14 @@ Route::post("variant", function (Request $request){
     $user = User::first();
     $allel = $request->allel;
     $variant = $request->variant;
-    $gene = Gene::create([
-        "name" => $variant
-    ]);
+
+    $gene = Gene::where('name', '=', $variant)->first();
+    if ($gene === null) {
+        $gene = Gene::create([
+            "name" => $variant
+        ]);
+    }
+
     $user_gene = \App\UserGene::create([
         "user_id" => $user->id,
         "gene_id" => $gene->id,
