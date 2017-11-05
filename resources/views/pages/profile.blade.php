@@ -111,7 +111,7 @@
                         <div class="list-group">
                             @foreach($traits as $trait)
                                 <a href="#" class="list-group-item bg-danger clearfix">
-                                    {{$trait['name']}}
+                                    {{((array)($trait))['name']}}
                                     <i class="icon-frown pull-right"></i>
                                 </a>
                             @endforeach
